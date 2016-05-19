@@ -1,8 +1,10 @@
 package javax.annotation;
 
 import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 import javax.annotation.meta.TypeQualifier;
 import javax.annotation.meta.TypeQualifierValidator;
@@ -12,12 +14,17 @@ import javax.annotation.meta.When;
 @Documented
 @TypeQualifier(applicableTo = Number.class)
 @Retention(RetentionPolicy.RUNTIME)
+@Target({ ElementType.FIELD, 
+	ElementType.METHOD, 
+	ElementType.PARAMETER, 
+	ElementType.LOCAL_VARIABLE,
+	ElementType.TYPE_USE})
 public @interface Nonnegative {
     When when() default When.ALWAYS;
 
     class Checker implements TypeQualifierValidator<Nonnegative> {
 
-        public When forConstantValue(Nonnegative annotation, Object v) {
+        public @Nonnull When forConstantValue(@Nonnull Nonnegative annotation, Object v) {
             if (!(v instanceof Number))
                 return When.NEVER;
             boolean isNegative;

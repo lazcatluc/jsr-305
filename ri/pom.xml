@@ -4,16 +4,15 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.jsr-305</groupId>
+		<groupId>ro.contezi.jsr-305</groupId>
 		<artifactId>jsr-305</artifactId>
 		<version>0.1-SNAPSHOT</version>
 	</parent>
 	
-	<groupId>org.jsr-305</groupId>
 	<artifactId>ri</artifactId>
 	<packaging>jar</packaging>
 	<name>JSR 305 Implementation</name>
-	<version>0.1-SNAPSHOT</version>
+	
 	<description>Implementation for JSR-305</description>
 
 
